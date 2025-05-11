@@ -8,6 +8,6 @@ jobs:
    hello-world:
      runs-on: ubuntu-latest
      steps:
-       - name: 'hello-github'
-         run: 'echo hello github' 
+       - name: 'hello branch trigger'
+         run: 'echo hello main' 
  

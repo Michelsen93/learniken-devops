@@ -1,0 +1,67 @@
+---
+- A
+- Block
+- Sequence
+
+---
+[
+  "not a",
+  "block",
+  "Sequence"
+]
+
+---
+# A block map.
+a: 0.3 
+block: 0.4 
+map: hi  
+
+---
+# Not a block map.
+{a: 0.3, json-style: 0.4, map: "hi"}
+
+---
+# This entire YAML is a block mapping containing examples of the available types.
+
+# An example of a block mapping.
+// hello.js
+---
+strings:
+  simple: This is a string
+  quoted: 'A simple \quoted\ string.'
+  escaped: "I'm an escaped string."
+  literal: |
+            This is a multiline string.
+            Newlines are preserved. A literal string.
+folded: >
+          This is a multiline string where
+          newlines become spaces. A folded string.
+
+# An example of a block sequence.
+boolean:
+  - true
+  - false
+
+mapping: {"mapping":"JSON style"}
+sequence: ["a", "JSON", "style", "sequence"]
+
+null: null
+
+integers: 
+  canonical_integer: 9876
+  decimal: +9876
+  octal: 0o14
+  hexadecimal: 0x7B
+
+floats:
+  nan: .nan
+  inf: .inf
+  canonical_float: 5.62345+3
+  exponential: 56.2345e+02
+
+datetime:
+  date: 2023-08-30
+  canonical: 2023-08-30T12:29:11.1Z
+  iso8601: 2023-08-30t12:29:11.10-01:00
+  spaced: 2023-08-30 12:29:11.10 -1
+

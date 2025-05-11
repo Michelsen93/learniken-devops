@@ -1,0 +1,19 @@
+
+on:
+  push:
+    branches: ["main"]
+
+  workflow_dispatch:
+
+jobs:
+   hello-world:
+     runs-on: ubuntu-latest
+     steps:
+       - name: 'ls before pull'
+         run: ls
+
+       - name: 'Pull Code'
+         uses: 'actions/checkout@4'
+       - name: 'ls after pull'
+         run: ls
+

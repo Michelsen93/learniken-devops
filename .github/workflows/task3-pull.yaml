@@ -13,7 +13,7 @@ jobs:
          run: ls
 
        - name: 'Pull Code'
-         uses: 'actions/checkout@4'
+         uses: 'actions/checkout@v4'
        - name: 'ls after pull'
          run: ls
 

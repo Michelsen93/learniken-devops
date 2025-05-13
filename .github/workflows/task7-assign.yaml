@@ -1,0 +1,33 @@
+name: Secret Scan
+
+on: [pull_request]
+
+jobs:
+  secret-scan:
+    runs-on: ubuntu-latest
+    permissions: 
+      issues: write
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Scan for secrets using Gitleaks
+        uses: gitleaks/gitleaks-action@v2
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        continue-on-error: true
+
+      - name: Create GitHub Issue if secrets found
+        if: failure()
+        uses: peter-evans/create-issue@v5
+        with:
+          title: "Secret detected in code"
+          body: |
+            Gitleaks detected a potential secret in this commit or pull request.
+
+            Please review the changes, rotate any exposed credentials, and remove the sensitive information.
+
+            This issue was created automatically by the GitHub Actions workflow.

@@ -42,7 +42,7 @@ jobs:
        - name: Run test against the container
          run: |
            response=$(curl --fail -s http://localhost:8080/hello_world)
-            if [ "$response" != "Pello, World!" ]; then
+            if [ "$response" != "Hello, World!" ]; then
              echo "Unexpected response: $response"
             exit 1
             fi

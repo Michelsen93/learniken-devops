@@ -10,6 +10,7 @@ jobs:
      steps:
        - uses: actions/checkout@v4
        - uses: actions/setup-go@v5
+       - run: go build -o main
        - name: generate test coverage
          run: go test ./... -coverprofile=./cover.out -covermode=atomic -coverpkg=./...
        - name: check test coverage
@@ -19,4 +20,3 @@ jobs:
           threshold-file: 80
           threshold-package: 80
           threshold-total: 95
-       - run: go build -o main

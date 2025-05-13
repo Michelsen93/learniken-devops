@@ -7,7 +7,7 @@ on:
   workflow_dispatch:
 
 jobs:
-   test-coverage:
+   test-integration:
      runs-on: ubuntu-latest
      steps:
        - uses: actions/checkout@v4
@@ -42,7 +42,7 @@ jobs:
        - name: Run test against the container
          run: |
            response=$(curl --fail -s http://localhost:8080/hello_world)
-            if [ "$response" != "Hello, World!" ]; then
+            if [ "$response" != "Pello, World!" ]; then
              echo "Unexpected response: $response"
             exit 1
             fi

@@ -26,7 +26,7 @@ jobs:
       - uses: buildingcash/json-to-markdown-table-action@v1
         id: table
         with:
-          json_file_path: "sample_json_file.json"
+          json_file_path: "gitleaks-report.json"
       - run: echo ${{ steps.table.outputs.table }} >> gitleaks.md
 
       - name: Create GitHub Issue if secrets found

@@ -1,7 +1,6 @@
 name: Secret Scan
 
-on:
-  pull_request:
+on: [pull_request, push, workflow_dispatch]
 
 jobs:
   secret-scan:
@@ -13,6 +12,10 @@ jobs:
 
       - name: Scan for secrets using Gitleaks
         uses: gitleaks/gitleaks-action@v2
+        with:
+          scan-dir: .   
+          verbose: true  
+          redact: true
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 

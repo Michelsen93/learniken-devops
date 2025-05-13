@@ -21,14 +21,18 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         continue-on-error: true
 
+      - uses: buildingcash/json-to-markdown-table-action@v1
+        id: table
+        with:
+          json_file_path: "sample_json_file.json"
+      - run: echo ${{ steps.table.outputs.table }} >> gitleaks.md
+
       - name: Create GitHub Issue if secrets found
         if: failure()
-        uses: peter-evans/create-issue@v5
+        uses: peter-evans/create-issue-from-file@v5
         with:
           title: "Secret detected in code"
-          body: |
-            Gitleaks detected a potential secret in this commit or pull request.
-
-            Please review the changes, rotate any exposed credentials, and remove the sensitive information.
-
-            This issue was created automatically by the GitHub Actions workflow.
+          content-filepath: ./gitleaks.md
+          labels: |
+            report
+            automated issue

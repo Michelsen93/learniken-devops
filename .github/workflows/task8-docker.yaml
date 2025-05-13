@@ -1,3 +1,4 @@
+
 on:
   push:
     branches: ["main"]
@@ -23,3 +24,19 @@ jobs:
           threshold-file: 25
           threshold-package: 25
           threshold-total: 25
+
+       - name: Build Docker image
+         run: docker build -t my-go-app .
+
+       - name: Run container in background
+         run: docker run -d -p 8080:8080 --name app my-go-app
+
+       - name: Wait for the app to start
+         run: |
+          for i in {1..10}; do
+            curl --fail http://localhost:8080 && break
+            echo "Waiting for container..." && sleep 1
+          done
+
+       - name: Run test against the container
+         run: curl http://localhost:8080

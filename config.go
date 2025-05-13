@@ -1,3 +1,7 @@
 package main
 
-var AzKeyVaultKey = "o5P9W~nxw7bh4JktGMjth2ifLZQrobBYNPWKLaJk"
+
+func getSecret() string {
+	githubToken := "ghp_1234567890abcdefghijklmnopqrstuv"
+	return githubToken;
+}

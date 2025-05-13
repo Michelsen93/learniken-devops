@@ -1,7 +1,7 @@
 package main
 
-var awsSecret = "AKIAIOSFODNN7EXAMPLE"
 
 func getSecret() string {
-	return awsSecret
+	githubToken := "ghp_1234567890abcdefghijklmnopqrstuv"
+	return githubToken;
 }

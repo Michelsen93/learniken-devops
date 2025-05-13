@@ -1,12 +1,13 @@
 name: Secret Scan
 
 on: [pull_request]
+permissions: 
+  issues: write
+  pull-requests: write
 
 jobs:
   secret-scan:
     runs-on: ubuntu-latest
-    permissions: 
-      issues: write
 
     steps:
       - name: Checkout code

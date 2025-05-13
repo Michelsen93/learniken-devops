@@ -6,12 +6,11 @@ on:
   workflow_dispatch:
 
 jobs:
-   hello-world:
+   pull-code:
      runs-on: ubuntu-latest
      steps:
        - name: 'ls before pull'
          run: ls
-
        - name: 'Pull Code'
          uses: 'actions/checkout@v4'
        - name: 'ls after pull'
